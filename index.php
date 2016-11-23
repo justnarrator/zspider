@@ -10,4 +10,4 @@ $parseNum = $version[0].$version[2];
 if((int)$parseNum < 55){
     die("请升级PHP版本");
 }
-define("DEBUG",TRUE);
+define("DEBUG",TRUE);//开启调试模式
