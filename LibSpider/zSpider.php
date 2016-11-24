@@ -61,3 +61,7 @@
         }
         return FALSE;
     }
+
+    function classAuto(){
+        
+    }
