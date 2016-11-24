@@ -5,8 +5,7 @@
  * Date: 2016/11/23
  * Time: 22:23
  */
-    defined('Z_PATH') 	or define('Z_PATH', dirname(__FILE__).'/');
-    defined('DEBUG') 	or define('DEBUG',false); // 是否调试模式
+    defined('DEBUG') 	or define('DEBUG',false); //  是否调试模式
     define('CPATH', '../Controller/'); //定义控制器目录
     define('MPATH', '../Model/');      //定义模型目录
     define('PPATH', '../Public/');     //定义静态文件目录
@@ -17,9 +16,10 @@
  * 路由函数
  */
     function routeSpider(){
-        $pathArr    = explode('/', $_SERVER['PATH_INFO']);
-        $controller = $pathArr[1];
-        $method     = $pathArr[2];
+        $routePath  = empty($_SERVER['PATH_INFO']) ? $_SERVER['REQUEST_URI'] : $_SERVER['PATH_INFO'];
+        $pathArr    = array_filter(explode('/', $routePath));
+        $controller = empty($pathArr[1]) ? 'index' : $pathArr[1];
+        $method     = empty($pathArr[2]) ? 'index' : $pathArr[2];
         sendRequest($controller,$method);
     }
 
@@ -48,9 +48,16 @@
     }
 
 /**
- * @param $controller
+ * @param string $controller
  * @return bool
  */
-    function checkController($controller){
+    function checkController($controller = ''){
+        if($controller !== ''){
+            $cFile = CPATH.$controller.'Controller.class.php';
+            if(is_file($cFile)){
+                return TRUE;
+            }
+            return FALSE;
+        }
         return FALSE;
     }
