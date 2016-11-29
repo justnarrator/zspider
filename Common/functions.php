@@ -67,3 +67,17 @@
 
         \LibSpider\zSpider::run();
     }
+
+    function e(){
+        exit;
+    }
+
+    function runStart(){
+        $GLOBALS['startTime'] = microtime(TRUE);
+    }
+
+    function runTime(){
+        if(DEBUG){
+            echo "<br/>运行时间",round(microtime(TRUE)-$GLOBALS['startTime'],4),'s';
+        }
+    }

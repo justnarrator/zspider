@@ -6,7 +6,7 @@
  * Time: 22:20
  */
 	/**PHP版本限制**/
-	$version  = (string)phpversion();//
+	$version  = (string)phpversion();
 	$parseNum = $version[0].$version[2];
 	if((int)$parseNum < 55){
     	die("请升级PHP版本");
@@ -26,9 +26,13 @@
 
 	#引入函数库
     include ZSPIDER.'/common/functions.php';//引入公共函数
-    include LIB.'/zSpider.php';             //引入核心文件
+    include LIB.'/zSpider.php';
+
+    require 'vendor/autoload.php';//引入依赖扩展
 
     spl_autoload_register('\LibSpider\zSpider::load');//自动加载类
 
+    runStart();
+    
     #启动小框架
     startSpider();

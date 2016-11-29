@@ -18,15 +18,14 @@ class zSpider {
         $routeMes   = $route->getRoute();
         $controller = $routeMes['controller'];
         $method     = $routeMes['method'];
-        $filePath = str_replace('/','\\' , HOME.'/Controller/'.$controller.'Controller.class.php');
+        $filePath   = str_replace('\\','/' , HOME.'Controller/'.$controller.'Controller.class.php');
         if(is_file($filePath)){
             include $filePath;
             $controllerClass = "\Controller\\".$controller.'Controller';
             $controllerObj   = new $controllerClass();
             if(is_callable([$controllerObj, $method])){
                 $controllerObj ->$method();
-            }else{
-                die('控制器方法不可用');
+                runTime();
             }
         }else{
             die('非法请求控制器');
@@ -40,12 +39,13 @@ class zSpider {
      */
     public static function load($class){
 
-            $file = ZSPIDER.'\\'.$class.'.php';
-            if(is_file($file)){
-                include $file;
-            }else{
-                return FALSE;
-            }
+        $filePath = ZSPIDER.'\\'.$class.'.php';
+        $file     = str_replace('\\','/',$filePath);
+        if(is_file($file)){
+            include $file;
+        }else{
+            return FALSE;
+        }
     }
 }
     
