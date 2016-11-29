@@ -1,24 +1,18 @@
 <?php
 namespace Controller;
+use \LibSpider\PController;
 
-class IndexController {
+class IndexController extends PController{
 
 	public function __construct(){
+		
+		parent::__construct();
 
 	}
 
 	public function index(){
-		echo '默认方法执行成功';
-		echo "<br/>";
-		echo 'TODO:1.get参数没有绑定2.模型没做3.视图没做4.控制器父类没有写';
+
+		echo 'TODO:2.模型没做3.视图没做4:?参数绑定';
 	}
 
-	public function __call($name,$arguments){
-		if(sizeof($arguments) > 0){
-			$arguments = implode(',',$arguments).'该方法参数为空';
-		}else{
-			$arguments = '该方法参数为空';
-		}
-		echo '[',$name,']方法不存在',"<br/>",$arguments;
-	}
 }

@@ -24,13 +24,12 @@ class zSpider {
             $controllerClass = "\Controller\\".$controller.'Controller';
             $controllerObj   = new $controllerClass();
             if(is_callable([$controllerObj, $method])){
+                bindGetPara();
                 $controllerObj ->$method();
-                runTime();
             }
         }else{
             die('非法请求控制器');
         }
-
     }
 
     /**
