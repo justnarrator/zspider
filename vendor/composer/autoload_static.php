@@ -7,6 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInit0b2bab4ba068610ae5324caf6c077c4c
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         'c7359326b6707d98bdc176bf9ddeaebf' => __DIR__ . '/..' . '/catfan/medoo/medoo.php',
     );
 
@@ -15,6 +17,11 @@ class ComposerStaticInit0b2bab4ba068610ae5324caf6c077c4c
         array (
             'Whoops\\' => 7,
         ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\VarDumper\\' => 28,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -22,14 +29,22 @@ class ComposerStaticInit0b2bab4ba068610ae5324caf6c077c4c
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\VarDumper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
     );
 
     public static $prefixesPsr0 = array (
-        'M' => 
+        'T' => 
         array (
-            'Monolog' => 
+            'Twig_' => 
             array (
-                0 => __DIR__ . '/..' . '/monolog/monolog/src',
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
     );
