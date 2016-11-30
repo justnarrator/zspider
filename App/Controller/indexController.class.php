@@ -12,7 +12,7 @@ class IndexController extends PController{
 
 	public function index(){
 
-		echo 'TODO:2.模型没做3.视图没做4:?参数绑定';
+		var_dump( 'TODO:2.模型没做3.视图没做4:?参数绑定' );
 	}
 
 }
