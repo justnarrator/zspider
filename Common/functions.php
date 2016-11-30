@@ -55,4 +55,12 @@
                 }
             }
         }
+    }
+
+    function getView(){
+        Twig_Autoloader::register();
+        $loader = new Twig_Loader_Filesystem('path/to/templates');//视图文件夹
+        $twig = new Twig_Environment($loader.array(
+                'cache' => 'path/to/compilation_cache',
+            ));
     } 
