@@ -13,11 +13,6 @@
         \LibSpider\zSpider::run();
     }
 
-    function e(){
-
-        exit;
-    }
-
     function runStart(){
 
         $GLOBALS['startTime'] = microtime(TRUE);
@@ -39,11 +34,16 @@
     }
 
     /**
-     * GET参数绑定，默认控制器和方法都有的情况下绑定
+     * GET参数绑定
+     * 支持路由模式:
+     * 1.p/v/p/v
+     * 2.p/v/p/v?p=v&p=v
+     * 3.p/v/p/v/?p=v&p=v
      */
     function bindGetPara(){
 
-        $string = explode('/', URI());
+        $quStr  = substr(URI(), strpos(URI(), '?')+1);
+        $string = explode('/', str_replace('?'.$quStr,'', URI()));
         $count  = sizeof($string);
         if($count > 3){
             if($string[3] != ''){
@@ -55,6 +55,18 @@
                 }
             }
         }
+        $quStr = substr(URI(), strpos(URI(), '?')+1);
+        $quArr = explode('&', $quStr);
+        array_map('parseUri',$quArr);
+    }
+
+    /**
+     * 解析路由
+     */
+    function parseUri($quStr){
+
+        $partArr = explode('=',$quStr);
+        $_GET[$partArr[0]] = $partArr[1];
     }
 
     function getView(){

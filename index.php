@@ -34,10 +34,8 @@
 	}else{
 		ini_set('display_errors', 0);
 	}
-
 	#引入函数库
     include ZSPIDER.'/common/functions.php';
-
     #引入核心类
     include LIB.'/zSpider.php';
 
