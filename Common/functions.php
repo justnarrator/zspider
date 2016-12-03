@@ -42,16 +42,16 @@
      */
     function bindGetPara(){
 
-        $quStr  = substr(URI(), strpos(URI(), '?')+1);
-        $string = explode('/', str_replace('?'.$quStr,'', URI()));
-        $count  = sizeof($string);
+        $quStr   = substr(URI(), strpos(URI(), '?')+1);
+        $baseArr = explode('/', str_replace('?'.$quStr,'', URI()));
+        $count  = sizeof($baseArr);
         if($count > 3){
-            if($string[3] != ''){
+            if($baseArr[3] != ''){
                 for($i=3;$i<$count;$i+=2){
-                    if($string[$i] == ''){
+                    if($baseArr[$i] == ''){
                         break;
                     }
-                    $_GET[$string[$i]] = isset($string[$i+1]) ? $string[$i+1] : '';
+                    $_GET[$baseArr[$i]] = isset($baseArr[$i+1]) ? $baseArr[$i+1] : '';
                 }
             }
         }
