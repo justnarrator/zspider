@@ -63,10 +63,13 @@
     /**
      * 解析路由
      */
-    function parseUri($quStr){
+    function parseUri(){
+        $qustr = empty(func_get_args()[0]) ? '' : func_get_args()[0];
+        if(!empty($quStr)){
+            $partArr = explode('=',$quStr);
+            $_GET[$partArr[0]] = $partArr[1];
+        }
 
-        $partArr = explode('=',$quStr);
-        $_GET[$partArr[0]] = $partArr[1];
     }
 
     function getView(){
