@@ -11,8 +11,6 @@ class IndexController extends PController{
 	}
 
 	public function index(){
-
-		dump($_GET);
 		dump( 'TODO:2.模型没做3.视图没做' );
 	}
 
