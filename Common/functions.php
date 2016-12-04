@@ -64,7 +64,7 @@
      * 解析路由
      */
     function parseUri(){
-        $qustr = empty(func_get_args()[0]) ? '' : func_get_args()[0];
+        $qustr = empty(func_get_arg(0)) ? '' : func_get_arg(0);
         if(!empty($quStr)){
             $partArr = explode('=',$quStr);
             $_GET[$partArr[0]] = $partArr[1];
