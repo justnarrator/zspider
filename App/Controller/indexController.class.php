@@ -12,7 +12,7 @@ class IndexController extends PController{
 
 	public function index(){
 
-		dump( 'TODO:2.模型没做3.视图没做' );
+		dump( 'TODO:2.模型没做3.视图还差部分' );
 		$ass = ['s','f'];
 		$this->zjd('s',$ass);
 		$this->showView();
