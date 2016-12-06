@@ -35,24 +35,36 @@ abstract class PController{
 		echo '[',$name,']静态方法不可访问',$arguments,PHP_EOL;
 	}
 
+	/**
+	 * 引入视图
+	 */
 	protected function showView(){
 
-		$function = debug_backtrace(0,2)[1]['function'];
 		$num = func_num_args();
-		$controller = get_class($this);
 		switch ($num) {
 			case 0:
+				$function = debug_backtrace(0,2)[1]['function'];
+				$controller = get_class($this);
 				$tplDir = explode('C',explode('\\',$controller)[1])[0]; 
-				$tpl    = $function.'.html';
+				$tpl    = $function;
 				break;
 			case 1:
-				#判断/
-			case 2:
-				#是否缓存文件
+				if(strpos(func_get_args()[0], '/') === FALSE){
+					$tplDir = explode('C',explode('\\',$controller)[1])[0];
+					$tpl    = func_get_args()[0];
+				}else{
+					$praArr = explode('/',func_get_args()[0]);
+					$tplDir = $praArr[0];
+					$tpl    = $praArr[1];
+				}
+				break;
 		}
 		$this->loadTpl($tplDir,$tpl);
 	}
 
+	/**
+	 * 加载模板同时传入变量
+	 */
 	protected function loadTpl($tplDir,$tpl){
 		#模版赋值的两种方法
 		$args = $this->args;
@@ -63,8 +75,10 @@ abstract class PController{
 		//  	unset($name);
 		// }
 		#2.extract函数
-		extract($args);
-		include_once(HOME.'View/'.$tplDir.'/'.$tpl);
+		if(!empty($args)){
+			extract($args);
+		}
+		include_once(HOME.'View/'.ucfirst($tplDir).'/'.$tpl.'.html');
 	}
 
 	public function zjd($name,$data){

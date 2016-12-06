@@ -18,7 +18,7 @@
     
 	#定义常量
 	define("ZSPIDER", './');   //根目录
-	define("HOME", ZSPIDER.'/App/');     //应用目录
+	define("HOME", ZSPIDER.'App/');     //应用目录
 	define("LIB", ZSPIDER.'/LibSpider/');//核心目录
 	define("DEBUG", TRUE);               //开启调试
 
