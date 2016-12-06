@@ -41,10 +41,10 @@ abstract class PController{
 	protected function showView(){
 
 		$num = func_num_args();
+		$controller = get_class($this);
 		switch ($num) {
 			case 0:
 				$function = debug_backtrace(0,2)[1]['function'];
-				$controller = get_class($this);
 				$tplDir = explode('C',explode('\\',$controller)[1])[0]; 
 				$tpl    = $function;
 				break;
