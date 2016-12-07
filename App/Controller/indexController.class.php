@@ -15,7 +15,7 @@ class IndexController extends PController{
 		dump( 'TODO:2.模型没做' );
 		$ass = ['s','f'];
 		$this->zjd('s',$ass);
-		$this->showView('Index');
+		$this->showView('Index/index');
 	}
 
 }
