@@ -13,15 +13,10 @@
         \LibSpider\zSpider::run();
     }
 
-    function runStart(){
-
-        $GLOBALS['startTime'] = microtime(TRUE);
-    }
-
     function runTime(){
 
         if(DEBUG){
-            echo "<br/>运行时间",round(microtime(TRUE)-$GLOBALS['startTime'],4),'s';
+            echo "<br/>运行时间",round(microtime(TRUE)-$_SERVER['REQUEST_TIME_FLOAT'],4),'s';
         }
     }
 

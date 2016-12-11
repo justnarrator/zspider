@@ -41,9 +41,6 @@
 
     #自动加载类
     spl_autoload_register('\LibSpider\zSpider::load');
-
-    #计算启动时间
-    runStart();
     
     #启动小框架
     startSpider();
